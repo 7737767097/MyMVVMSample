@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">MVVM-Kotlin-Android-Architecture-master-3</string>
-
+    <string name="app_name">Mvvm Practice</string>
     <string name="no_data">No Data</string>
     <string name="search_by_title">Search by title</string>
     <string name="search_error">there is no such title</string>
@@ -16,5 +15,4 @@
     <string name="news">News</string>
     <string name="no_internet">Please check your internet connection</string>
     <string name="network_error">Network error, could get data,please try again!</string>
-
 </resources>

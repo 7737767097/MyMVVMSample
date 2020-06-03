@@ -27,6 +27,8 @@ import com.task.data.source.remote.RemoteRepository
 import com.task.data.source.remote.ServiceGenerator
 import com.task.di.DatabaseInfo
 import com.task.utils.Constants
+import com.task.utils.rx.AppSchedulerProvider
+import com.task.utils.rx.SchedulerProvider
 
 import dagger.Module
 import dagger.Provides
@@ -86,5 +88,10 @@ class AppModule {
                 provideApplication().applicationContext
             )
         )
+    }
+
+    @Provides
+    fun provideSchedulerProvider(): SchedulerProvider? {
+        return AppSchedulerProvider()
     }
 }

@@ -3,6 +3,7 @@ package com.task
 import android.content.Context
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
+import com.orhanobut.hawk.Hawk
 import com.task.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -18,6 +19,7 @@ class App : MultiDexApplication(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
+        Hawk.init(this).build()
         mContext = this
         initDagger()
     }

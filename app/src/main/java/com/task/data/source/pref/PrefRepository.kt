@@ -10,4 +10,8 @@ class PrefRepository @Inject constructor() {
 
     fun setOverview(covidOverview: String) = Hawk.put(CacheKey.OVERVIEW, covidOverview)
 
+    fun getNews(): String? = Hawk.get(CacheKey.NEWS, null)
+
+    fun setNews(news: String) = Hawk.put(CacheKey.NEWS, news)
+
 }

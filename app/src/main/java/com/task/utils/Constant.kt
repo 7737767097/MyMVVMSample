@@ -15,6 +15,7 @@ object Constant {
 
 object CacheKey {
     const val OVERVIEW = "cache_statistics"
+    const val NEWS = "NEWS"
     const val DAYS = "cache_days"
     const val CONFIRMED = "cache_confirmed"
     const val DEATH = "cache_death"

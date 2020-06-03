@@ -1,5 +1,7 @@
 package com.task.data
 
+import android.util.Log
+import com.google.gson.Gson
 import com.task.data.model.NewsModel
 
 import com.task.data.source.pref.PrefRepository
@@ -15,7 +17,20 @@ class DataRepository @Inject constructor(
 
     //    Remote method (From API)
     override suspend fun requestNews(): Resource<NewsModel> {
-        return remoteRepository.requestNews()
+        if (prefRepository.getNews().isNullOrEmpty()) {
+            Log.d("test", "from remote")
+            if (remoteRepository.requestNews()?.data != null)
+                prefRepository.setNews(Gson().toJson(remoteRepository.requestNews()?.data))
+            return remoteRepository.requestNews()
+        } else {
+            Log.d("test", "from preference")
+            return Resource.Success(
+                Gson().fromJson(
+                    prefRepository.getNews(),
+                    NewsModel::class.java
+                )
+            )
+        }
     }
 
     //    Preference method

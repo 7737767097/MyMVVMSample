@@ -42,7 +42,6 @@ class NewsListActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.toolbarLayout.icToolbarRefresh.setOnClickListener {
-            Log.d("test", "Refresh button clicked")
             newsListViewModel.getNews()
         }
         binding.toolbarLayout.icToolbarSetting.setOnClickListener {

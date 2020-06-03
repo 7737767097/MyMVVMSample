@@ -34,9 +34,7 @@ constructor(
         newsMutableLiveData.postValue(Resource.Loading())
         launch {
             try {
-                Log.d("test", "getNews called")
                 serviceResponse = dataRepository.requestNews()
-                Log.d("test", "getNews called 2 -> " + Gson().toJson(serviceResponse))
                 newsMutableLiveData.postValue(serviceResponse)
             } catch (e: Exception) {
                 e.printStackTrace()

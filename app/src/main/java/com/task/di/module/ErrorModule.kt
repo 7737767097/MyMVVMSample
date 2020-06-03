@@ -1,4 +1,4 @@
-package com.task.di
+package com.task.di.module
 
 import com.task.data.error.mapper.ErrorMapper
 import com.task.data.error.mapper.ErrorMapperInterface

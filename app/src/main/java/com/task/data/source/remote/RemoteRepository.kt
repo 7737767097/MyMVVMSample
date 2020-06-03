@@ -31,11 +31,11 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
         }
         return try {
             val response = fetchNews.invoke()
-            val responseCode = response.code()
             if (response.isSuccessful) {
-                response
-            } else responseCode
+                response.body()
+            } else response.code()
         } catch (e: Exception) {
+            e.printStackTrace()
             Error.NETWORK_ERROR
         }
     }

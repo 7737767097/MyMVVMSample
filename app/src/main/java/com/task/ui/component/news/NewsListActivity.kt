@@ -2,6 +2,7 @@ package com.task.ui.component.news
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.LiveData
@@ -40,7 +41,10 @@ class NewsListActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.toolbarLayout.icToolbarRefresh.setOnClickListener { newsListViewModel.getNews() }
+        binding.toolbarLayout.icToolbarRefresh.setOnClickListener {
+            Log.d("test", "Refresh button clicked")
+            newsListViewModel.getNews()
+        }
         binding.toolbarLayout.icToolbarSetting.setOnClickListener {
             if (!(binding.etSearch.text?.toString().isNullOrEmpty())) {
                 binding.pbLoading.visibility = View.VISIBLE

@@ -14,13 +14,19 @@
  * limitations under the License.
  */
 
-package com.task.di
+package com.task.di.module
 
 import android.app.Application
+import android.content.Context
+import androidx.room.Room
+import com.task.data.source.db.AppDatabase
+import com.task.data.source.db.DBRepository
 
 import com.task.data.source.pref.PrefRepository
 import com.task.data.source.remote.RemoteRepository
 import com.task.data.source.remote.ServiceGenerator
+import com.task.di.DatabaseInfo
+import com.task.utils.Constants
 
 import dagger.Module
 import dagger.Provides
@@ -54,31 +60,31 @@ class AppModule {
         return Dispatchers.Main
     }
 
-//    @Provides
-//    @DatabaseInfo
-//    fun provideDataBaseName(): String {
-//        return Constants.DB_NAME
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun provideAppDatabase(
-//        @DatabaseInfo dbName: String?,
-//        context: Context?
-//    ): AppDatabase {
-//        return Room.databaseBuilder(context!!, AppDatabase::class.java, dbName!!)
-//            .fallbackToDestructiveMigration()
-//            .build()
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun provideDBRepository(): DBRepository {
-//        return DBRepository(
-//            provideAppDatabase(
-//                provideDataBaseName(),
-//                provideApplication().applicationContext
-//            )
-//        )
-//    }
+    @Provides
+    @DatabaseInfo
+    fun provideDataBaseName(): String {
+        return Constants.DB_NAME
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppDatabase(
+        @DatabaseInfo dbName: String?,
+        context: Context?
+    ): AppDatabase {
+        return Room.databaseBuilder(context!!, AppDatabase::class.java, dbName!!)
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDBRepository(): DBRepository {
+        return DBRepository(
+            provideAppDatabase(
+                provideDataBaseName(),
+                provideApplication().applicationContext
+            )
+        )
+    }
 }

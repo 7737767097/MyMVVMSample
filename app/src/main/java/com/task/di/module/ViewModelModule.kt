@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.task.di
+package com.task.di.module
 
 import androidx.lifecycle.ViewModel
+import com.task.di.ViewModelKey
 import com.task.ui.component.details.DetailsViewModel
 import com.task.ui.component.news.NewsListViewModel
 import com.task.ui.component.splash.SplashViewModel

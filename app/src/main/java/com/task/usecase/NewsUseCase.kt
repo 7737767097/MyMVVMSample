@@ -1,6 +1,8 @@
 package com.task.usecase
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.Gson
 import com.task.data.DataSource
 import com.task.data.Resource
 import com.task.data.error.Error.Companion.NETWORK_ERROR
@@ -32,9 +34,12 @@ constructor(
         newsMutableLiveData.postValue(Resource.Loading())
         launch {
             try {
+                Log.d("test", "getNews called")
                 serviceResponse = dataRepository.requestNews()
+                Log.d("test", "getNews called 2 -> " + Gson().toJson(serviceResponse))
                 newsMutableLiveData.postValue(serviceResponse)
             } catch (e: Exception) {
+                e.printStackTrace()
                 newsMutableLiveData.postValue(Resource.DataError(NETWORK_ERROR))
             }
         }

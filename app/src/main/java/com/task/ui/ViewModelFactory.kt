@@ -34,6 +34,7 @@ class ViewModelFactory @Inject constructor(@JvmSuppressWildcards private val cre
             @Suppress("UNCHECKED_CAST")
             return creator.get() as T
         } catch (e: Exception) {
+            e.printStackTrace()
             throw RuntimeException(e)
         }
 

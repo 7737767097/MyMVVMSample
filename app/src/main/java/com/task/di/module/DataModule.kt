@@ -1,4 +1,4 @@
-package com.task.di
+package com.task.di.module
 
 import com.task.data.DataRepository
 import com.task.data.DataSource

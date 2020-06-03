@@ -13,15 +13,20 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License
  */
-package com.task.data.source.db
 
-import com.task.data.model.User
-import io.reactivex.Observable
+package com.task.di;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+import javax.inject.Qualifier;
 
 /**
  * Created by amitshekhar on 07/07/17.
  */
-interface DbHelper {
-    val allUsers: Observable<List<User?>?>?
-    fun insertUser(user: User?): Observable<Boolean?>?
+
+@Qualifier
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ApiInfo {
+
 }

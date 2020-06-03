@@ -13,15 +13,29 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License
  */
-package com.task.data.source.db
+package com.task.data.model
 
-import com.task.data.model.User
-import io.reactivex.Observable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 
 /**
  * Created by amitshekhar on 07/07/17.
  */
-interface DbHelper {
-    val allUsers: Observable<List<User?>?>?
-    fun insertUser(user: User?): Observable<Boolean?>?
+@Entity(tableName = "users")
+class User {
+    @kotlin.jvm.JvmField
+    @ColumnInfo(name = "created_at")
+    var createdAt: String? = null
+
+    @kotlin.jvm.JvmField
+    @PrimaryKey
+    var id: Long? = null
+    @kotlin.jvm.JvmField
+    var name: String? = null
+
+    @kotlin.jvm.JvmField
+    @ColumnInfo(name = "updated_at")
+    var updatedAt: String? = null
 }

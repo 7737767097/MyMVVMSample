@@ -13,15 +13,34 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License
  */
-package com.task.data.source.db
+package com.task.data.source.db.dao
 
+import androidx.room.*
 import com.task.data.model.User
-import io.reactivex.Observable
+import io.reactivex.Single
+
 
 /**
  * Created by amitshekhar on 07/07/17.
  */
-interface DbHelper {
-    val allUsers: Observable<List<User?>?>?
-    fun insertUser(user: User?): Observable<Boolean?>?
+@Dao
+interface UserDao {
+
+    @Delete
+    fun delete(user: User?)
+
+    @Query("SELECT * FROM users WHERE name LIKE :name LIMIT 1")
+    fun findByName(name: String?): Single<User?>?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(user: User?)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(users: List<User?>?)
+
+    @Query("SELECT * FROM users")
+    fun loadAll(): List<User?>?
+
+    @Query("SELECT * FROM users WHERE id IN (:userIds)")
+    fun loadAllByIds(userIds: List<Int?>?): List<User?>?
 }

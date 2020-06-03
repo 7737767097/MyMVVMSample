@@ -1,8 +1,9 @@
 package com.task
 
 import android.content.Context
+import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
-import com.task.di.DaggerAppComponent
+import com.task.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -22,7 +23,7 @@ class App : MultiDexApplication(), HasAndroidInjector {
     }
 
     open fun initDagger() {
-        DaggerAppComponent.builder().build().inject(this)
+        DaggerAppComponent.builder().application(this).build().inject(this)
     }
 
     companion object {

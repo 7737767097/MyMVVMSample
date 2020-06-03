@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.task.di
+package com.task.di.builder
 
 import com.task.ui.component.details.DetailsActivity
 import com.task.ui.component.news.NewsListActivity
@@ -23,7 +23,7 @@ import dagger.android.ContributesAndroidInjector
 
 @Suppress("unused")
 @Module
-abstract class ActivityModuleBuilder {
+abstract class ActivityBuilder {
     @ContributesAndroidInjector
     abstract fun contributeSplashActivity(): SplashActivity
 

@@ -14,10 +14,15 @@
  * limitations under the License.
  */
 
-package com.task.di
+package com.task.di.component
 
 import android.app.Application
 import com.task.App
+import com.task.di.module.AppModule
+import com.task.di.module.DataModule
+import com.task.di.module.ErrorModule
+import com.task.di.module.ViewModelModule
+import com.task.di.builder.ActivityBuilder
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -30,7 +35,7 @@ import javax.inject.Singleton
         AppModule::class,
         DataModule::class,
         ErrorModule::class,
-        ActivityModuleBuilder::class,
+        ActivityBuilder::class,
         ViewModelModule::class
     ]
 )

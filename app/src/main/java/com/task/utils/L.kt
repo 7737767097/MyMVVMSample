@@ -1,7 +1,7 @@
 package com.task.utils
 
 import android.util.Log
-import com.task.BuildConfig
+import com.mvvm.sample.BuildConfig
 
 /**
  * Created by AhmedEltaher

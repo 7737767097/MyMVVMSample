@@ -14,8 +14,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
+import com.mvvm.sample.R
 import com.squareup.picasso.Picasso
-import com.task.R
 
 fun View.showKeyboard() {
     (context?.getSystemService(Service.INPUT_METHOD_SERVICE) as? InputMethodManager)

@@ -17,8 +17,13 @@ import kotlin.coroutines.CoroutineContext
  */
 
 class NewsUseCase @Inject
-constructor(private val dataRepository: DataSource, override val coroutineContext: CoroutineContext) : UseCase, CoroutineScope {
+constructor(
+    private val dataRepository: DataSource,
+    override val coroutineContext: CoroutineContext
+) : UseCase, CoroutineScope {
+
     private val newsMutableLiveData = MutableLiveData<Resource<NewsModel>>()
+
     override val newsLiveData: MutableLiveData<Resource<NewsModel>> = newsMutableLiveData
 
 
@@ -39,7 +44,9 @@ constructor(private val dataRepository: DataSource, override val coroutineContex
         val news = newsMutableLiveData.value?.data?.newsItems
         if (!news.isNullOrEmpty()) {
             for (newsItem in news) {
-                if (newsItem.title.isNotEmpty() && newsItem.title.toLowerCase().contains(keyWord.toLowerCase())) {
+                if (newsItem.title.isNotEmpty() && newsItem.title.toLowerCase()
+                        .contains(keyWord.toLowerCase())
+                ) {
                     return newsItem
                 }
             }

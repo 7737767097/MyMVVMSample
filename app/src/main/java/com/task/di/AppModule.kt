@@ -16,10 +16,12 @@
 
 package com.task.di
 
-import com.task.data.source.db.DBRepository
+import android.app.Application
+
 import com.task.data.source.pref.PrefRepository
 import com.task.data.source.remote.RemoteRepository
 import com.task.data.source.remote.ServiceGenerator
+
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +30,12 @@ import kotlin.coroutines.CoroutineContext
 
 @Module
 class AppModule {
+
+    @Provides
+    fun provideApplication(): Application {
+        return Application()
+    }
+
     @Provides
     @Singleton
     fun providePrefRepository(): PrefRepository {
@@ -45,4 +53,32 @@ class AppModule {
     fun provideCoroutineContext(): CoroutineContext {
         return Dispatchers.Main
     }
+
+//    @Provides
+//    @DatabaseInfo
+//    fun provideDataBaseName(): String {
+//        return Constants.DB_NAME
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideAppDatabase(
+//        @DatabaseInfo dbName: String?,
+//        context: Context?
+//    ): AppDatabase {
+//        return Room.databaseBuilder(context!!, AppDatabase::class.java, dbName!!)
+//            .fallbackToDestructiveMigration()
+//            .build()
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideDBRepository(): DBRepository {
+//        return DBRepository(
+//            provideAppDatabase(
+//                provideDataBaseName(),
+//                provideApplication().applicationContext
+//            )
+//        )
+//    }
 }

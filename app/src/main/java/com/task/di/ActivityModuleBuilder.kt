@@ -32,4 +32,24 @@ abstract class ActivityModuleBuilder {
 
     @ContributesAndroidInjector
     abstract fun contributeDetailsActivity(): DetailsActivity
+
+
+    /*
+    * For fragments, need to add all fragment like below
+    *
+    *  @ContributesAndroidInjector(modules = {
+            FeedActivityModule.class,
+            BlogFragmentProvider.class,
+            OpenSourceFragmentProvider.class})
+    abstract FeedActivity bindFeedActivity();
+
+*
+* @Module
+public abstract class BlogFragmentProvider {
+
+    @ContributesAndroidInjector(modules = BlogFragmentModule.class)
+    abstract BlogFragment provideBlogFragmentFactory();
+}
+*
+* */
 }

@@ -28,7 +28,7 @@ constructor(
 
     override val newsLiveData: MutableLiveData<Resource<NewsModel>> = newsMutableLiveData
 
-
+    /*Requesting news data from here */
     override fun getNews() {
         var serviceResponse: Resource<NewsModel>?
         newsMutableLiveData.postValue(Resource.Loading())
@@ -43,6 +43,7 @@ constructor(
         }
     }
 
+    /*Searching from list of news data*/
     override fun searchByTitle(keyWord: String): NewsItem? {
         val news = newsMutableLiveData.value?.data?.newsItems
         if (!news.isNullOrEmpty()) {

@@ -17,7 +17,6 @@ class NewsAdapter(
         override fun onItemSelected(newsItem: NewsItem) {
             newsListViewModel.openNewsDetails(newsItem)
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {

@@ -19,7 +19,7 @@ class NewsListViewModel @Inject constructor(private val newsDataUseCase: NewsUse
     override val errorManager: ErrorManager
         get() = ErrorManager(ErrorMapper())
 
-    /*
+    /* *
     * Data -> LiveData, Exposed as LiveData, Locally in ViewModel as MutableLiveData
     * */
     var newsLiveData: MutableLiveData<Resource<NewsModel>> = newsDataUseCase.newsLiveData
